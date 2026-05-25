@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Мои заявки</title>
+</head>
+<body>
+    <h1>Мои заявки</h1>
+
+    <a href="{% url 'home' %}">На главную</a>
+
+    {% if applications %}
+        {% for app in applications %}
+            <div style="border: 1px solid #ccc; margin: 10px; padding: 10px;">
+                <p>Дата: {{ app.application_date }}</p>
+                <p>Время: {{ app.application_time }}</p>
+                <p>Адрес: {{ app.address }}</p>
+                <p>Услуга: {{ app.get_service_display }}</p>
+                <p>Оплата: {{ app.get_payment_display }}</p>
+                <p>Телефон: {{ app.contact_phone }}</p>
+                <p>Статус: 
+                    {% if app.status == 'new' %}Новая
+                    {% elif app.status == 'completed' %}Выполнена
+                    {% else %}Отменена{% endif %}
+                </p>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>У вас пока нет заявок</p>
+        <a href="{% url 'create_application' %}">Создать первую заявку</a>
+    {% endif %}
+</body>
+</html>

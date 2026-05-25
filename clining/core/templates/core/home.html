@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Главная</title>
+</head>
+<body>
+    <h1>Мой Не Сам</h1>
+    <h2>Портал клининговых услуг</h2>
+
+    <div>
+        <a href="{% url 'create_application' %}">Создать заявку</a>
+        <br>
+        <a href="{% url 'applications' %}">Мои заявки</a>
+        <br>
+        {% if user.username == 'adminka' %}
+            <a href="/admin/">Панель администратора</a>
+            <br>
+        {% endif %}
+        <a href="{% url 'logout' %}">Выйти</a>
+    </div>
+</body>
+</html>

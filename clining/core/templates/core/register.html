@@ -1,57 +1,58 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Регистрация</title>
-</head>
-<body>
-    <h1>Регистрация</h1>
+{% extends 'core/base.html' %}
+{% block title %}Регистрация{% endblock %}
 
-    <form method="post">
+{% block content %}
+<div class="bg-white rounded-md border p-6 max-w-md mx-auto border-color">
+    <h2 class="text-2xl font-bold text-center mb-6 text-color">Регистрация</h2>
+
+    <form method="post" class="space-y-3">
         {% csrf_token %}
         
-        <label>Логин (мин. 6 символов):</label>
-        <input type="text" name="username" required>
-        <br>
+        <div>
+            <label class="block mb-1 text-color">Логин (мин. 6 символов):</label>
+            <input type="text" name="username" required class="w-full border rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#8baff4] border-color">
+        </div>
         
-        <label>Пароль (мин. 6 символов):</label>
-        <input type="password" name="password" required>
-        <br>
+        <div>
+            <label class="block mb-1 text-color">Пароль (мин. 6 символов):</label>
+            <input type="password" name="password" required class="w-full border rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#8baff4] border-color">
+        </div>
         
-        <label>Подтверждение пароля:</label>
-        <input type="password" name="password2" required>
-        <br>
+        <div>
+            <label class="block mb-1 text-color">Подтверждение пароля:</label>
+            <input type="password" name="password2" required class="w-full border rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#8baff4] border-color">
+        </div>
         
-        <label>Фамилия:</label>
-        <input type="text" name="last_name" required>
-        <br>
+        <div>
+            <label class="block mb-1 text-color">Фамилия:</label>
+            <input type="text" name="last_name" required class="w-full border rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#8baff4] border-color">
+        </div>
         
-        <label>Имя:</label>
-        <input type="text" name="first_name" required>
-        <br>
+        <div>
+            <label class="block mb-1 text-color">Имя:</label>
+            <input type="text" name="first_name" required class="w-full border rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#8baff4] border-color">
+        </div>
         
-        <label>Отчество (необязательно):</label>
-        <input type="text" name="middle_name">
-        <br>
+        <div>
+            <label class="block mb-1 text-color">Отчество (необязательно):</label>
+            <input type="text" name="middle_name" class="w-full border rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#8baff4] border-color">
+        </div>
         
-        <label>Телефон:</label>
-        <input type="tel" name="phone" required>
-        <br>
+        <div>
+            <label class="block mb-1 text-color">Телефон:</label>
+            <input type="tel" name="phone" required class="w-full border rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#8baff4] border-color">
+        </div>
         
-        <label>Email:</label>
-        <input type="email" name="email" required>
-        <br>
+        <div>
+            <label class="block mb-1 text-color">Email:</label>
+            <input type="email" name="email" required class="w-full border rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#8baff4] border-color">
+        </div>
         
-        <button type="submit">Зарегистрироваться</button>
+        <button type="submit" class="w-full text-white py-2 rounded-md hover:opacity-90 transition mt-4 bg-color">Зарегистрироваться</button>
     </form>
 
-    {% if messages %}
-        {% for message in messages %}
-            <p style="color: red;">{{ message }}</p>
-        {% endfor %}
-    {% endif %}
-
-    <p>Уже есть аккаунт? <a href="{% url 'login' %}">Войти</a></p>
-</body>
-</html>
+    <p class="text-center mt-4 text-color">
+        Уже есть аккаунт? <a href="{% url 'login' %}" class="hover:underline" style="color: #8baff4;">Войти</a>
+    </p>
+</div>
+{% endblock %}

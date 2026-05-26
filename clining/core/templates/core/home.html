@@ -1,24 +1,28 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Главная</title>
-</head>
-<body>
-    <h1>Мой Не Сам</h1>
-    <h2>Портал клининговых услуг</h2>
+{% extends 'core/base.html' %}
+{% load static %}
+{% block title %}Главная{% endblock %}
 
-    <div>
-        <a href="{% url 'create_application' %}">Создать заявку</a>
-        <br>
-        <a href="{% url 'applications' %}">Мои заявки</a>
-        <br>
+{% block content %}
+<header class="flex justify-between items-center mb-12">
+    <p class="text-3xl font-bold text-center text-color">Мой Не Сам</p>
+    <nav class="flex gap-3">
         {% if user.username == 'adminka' %}
-            <a href="/admin/">Панель администратора</a>
-            <br>
+            <a href="/admin/" class="text-white px-4 py-2 rounded-md hover:opacity-90 transition bg-color">Панель администратора</a>
         {% endif %}
-        <a href="{% url 'logout' %}">Выйти</a>
+        <a href="{% url 'create_application' %}" class="text-white px-4 py-2 rounded-md hover:opacity-90 transition bg-color">Создать заявку</a>
+        <a href="{% url 'applications' %}" class="text-white px-4 py-2 rounded-md hover:opacity-90 transition bg-color">Мои заявки</a>
+        <a href="{% url 'logout' %}" class="text-white px-4 py-2 rounded-md hover:opacity-90 transition bg-error">Выйти</a>
+    </nav>
+</header>
+
+<section class="flex flex-row gap-8 mt-16">
+    <div class="w-1/2">
+        <h2 class="text-4xl font-bold mb-3 text-color mb-20">Портал клининговых услуг "Мой Не Сам"</h2>
+        <p class="text-gray-700 mb-10">Гарантируем чистоту, безопасность и высокое качество обслуживания. В нашем штате только опытные клинеры, прошедшие специальное обучение. Используем профессиональную химию и оборудование.</p>
+        <a href="{% url 'create_application' %}" class="text-white px-6 py-2 rounded-md inline-block hover:opacity-90 transition bg-color">Создать заявку</a>
     </div>
-</body>
-</html>
+    <div class="w-1/2">
+        <img src="{% static 'image/07_office_corridor_cleaning.jpg' %}" alt="Уборка офиса" class="w-full rounded-md border border-color">
+    </div>
+</section>
+{% endblock %}

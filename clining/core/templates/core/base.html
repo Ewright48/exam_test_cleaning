@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}Мой Не Сам{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/tailwind.min.css' %}">
+    <style>
+        .bg-color { background-color: #7da6f4; }
+        .bg-error { background-color: #b35555; }
+        .text-color { color: #372020; }
+        .border-color { border-color: #372020; }
+    </style>
+</head>
+<body class="min-h-screen" style="background-color: #fefef0;">
+    <div class="container px-4 py-6 max-w-6xl mx-24">
+        {% if messages %}
+            {% for message in messages %}
+                <div class="text-white p-3 rounded-md mb-4 bg-error">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+        
+        {% block content %}
+        {% endblock %}
+    </div>
+</body>
+</html>

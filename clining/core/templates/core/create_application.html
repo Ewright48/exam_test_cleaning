@@ -1,57 +1,55 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Новая заявка</title>
-</head>
-<body>
-    <h1>Новая заявка</h1>
+{% extends 'core/base.html' %}
+{% block title %}Новая заявка{% endblock %}
 
-    <a href="{% url 'home' %}">На главную</a>
+{% block content %}
+<div class="bg-white rounded-md border p-6 border-color">
+    <div class="flex justify-between items-center mb-6">
+        <h2 class="text-2xl font-bold text-color">Новая заявка</h2>
+        <a href="{% url 'home' %}" class="text-white px-4 py-2 rounded-md hover:opacity-90 transition bg-error">На главную</a>
+    </div>
 
-    <form method="post">
+    <form method="post" class="space-y-4">
         {% csrf_token %}
         
-        <label>Адрес:</label>
-        <input type="text" name="address" required>
-        <br>
+        <div>
+            <label class="block mb-1 text-color">Адрес:</label>
+            <input type="text" name="address" required class="w-full border rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#8baff4] border-color">
+        </div>
         
-        <label>Контактный телефон:</label>
-        <input type="tel" name="contact_phone" required>
-        <br>
+        <div>
+            <label class="block mb-1 text-color">Контактный телефон:</label>
+            <input type="tel" name="contact_phone" required class="w-full border rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#8baff4] border-color">
+        </div>
         
-        <label>Желаемая дата:</label>
-        <input type="date" name="application_date" min="{% now 'Y-m-d' %}" required>
-        <br>
+        <div>
+            <label class="block mb-1 text-color">Желаемая дата:</label>
+            <input type="date" name="application_date" min="{% now 'Y-m-d' %}" required class="w-full border rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#8baff4] border-color">
+        </div>
         
-        <label>Желаемое время:</label>
-        <input type="time" name="application_time" required>
-        <br>
+        <div>
+            <label class="block mb-1 text-color">Желаемое время:</label>
+            <input type="time" name="application_time" required class="w-full border rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#8baff4] border-color">
+        </div>
         
-        <label>Вид услуги:</label>
-        <select name="service" required>
-            <option value="cleaning">Общая уборка</option>
-            <option value="general_cleaning">Генеральная уборка</option>
-            <option value="post_build">Послестроительная уборка</option>
-            <option value="dry_cleaning">Химчистка ковров и мебели</option>
-        </select>
-        <br>
+        <div>
+            <label class="block mb-1 text-color">Вид услуги:</label>
+            <select name="service" required class="w-full border rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#8baff4] border-color">
+                <option value="cleaning">Общая уборка</option>
+                <option value="general_cleaning">Генеральная уборка</option>
+                <option value="post_build">Послестроительная уборка</option>
+                <option value="dry_cleaning">Химчистка ковров и мебели</option>
+            </select>
+        </div>
         
-        <label>Способ оплаты:</label>
-        <select name="payment" required>
-            <option value="cash">Наличными</option>
-            <option value="card">Банковской картой</option>
-        </select>
-        <br>
+        <div>
+            <label class="block mb-1 text-color">Способ оплаты:</label>
+            <select name="payment" required class="w-full border rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#8baff4] border-color">
+                <option value="cash">Наличными</option>
+                <option value="card">Банковской картой</option>
+            </select>
+        </div>
         
-        <button type="submit">Отправить заявку</button>
+        <button type="submit" class="w-full text-white py-2 rounded-md hover:opacity-90 transition mt-4 bg-color">Отправить заявку</button>
     </form>
-
-    {% if messages %}
-        {% for message in messages %}
-            <p style="color: red;">{{ message }}</p>
-        {% endfor %}
-    {% endif %}
-</body>
-</html>
+</div>
+{% endblock %}
